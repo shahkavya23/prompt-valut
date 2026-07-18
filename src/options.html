@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prompttora Library</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Prompttora Library</h1>
+        <p>Manage your reusable prompts in a full workspace.</p>
+      </div>
+      <span id="count">0/100</span>
+    </header>
+
+    <section class="cloud">
+      <div>
+        <h2>Cloud sync</h2>
+        <p id="cloudStatus">Not connected</p>
+      </div>
+      <div class="cloud-grid">
+        <input id="supabaseKey" type="hidden">
+        <input id="email" type="email" placeholder="Email">
+        <input id="password" type="password" placeholder="Password">
+        <button id="login">Login</button>
+        <button id="signup">Sign up</button>
+        <button id="sync">Sync now</button>
+        <button id="logout" hidden>Logout</button>
+      </div>
+    </section>
+
+    <section class="composer">
+      <input id="title" placeholder="Prompt title">
+      <select id="category"></select>
+      <textarea id="text" placeholder="Write or paste a prompt"></textarea>
+      <textarea id="refined" placeholder="Refined prompt"></textarea>
+      <div class="actions">
+        <button id="refine">Refine</button>
+        <button id="save">Save prompt</button>
+        <button id="reset">Clear</button>
+      </div>
+    </section>
+
+    <section class="filters">
+      <input id="search" type="search" placeholder="Search library">
+      <select id="filter">
+        <option value="All">All categories</option>
+      </select>
+    </section>
+
+    <section id="list" class="list"></section>
+  </main>
+  <script src="shared.js"></script>
+  <script src="supabase.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

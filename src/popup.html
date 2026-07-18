@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prompttora</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="../assets/icon-48.png" alt="" aria-hidden="true">
+        <div>
+          <h1>Prompttora</h1>
+          <p>Reusable prompts, sorted automatically</p>
+        </div>
+      </div>
+      <div class="quota" id="countText">0/100</div>
+    </header>
+
+    <section class="primary-grid">
+      <button id="newBtn" class="primary-action" title="New prompt" aria-label="New prompt">New prompt</button>
+      <button id="saveSelectionBtn" class="secondary-action">Save selection</button>
+      <button id="screenshotBtn" class="secondary-action">Snap</button>
+    </section>
+
+    <section id="authPanel" class="auth-panel">
+      <div class="auth-head">
+        <div>
+          <strong id="authTitle">Cloud sync</strong>
+          <span id="authStatus">Not connected</span>
+        </div>
+        <button id="syncBtn" type="button">Sync</button>
+      </div>
+      <div id="authForm" class="auth-form">
+        <input id="supabaseKeyInput" type="hidden">
+        <input id="emailInput" type="email" placeholder="Email">
+        <input id="passwordInput" type="password" placeholder="Password">
+        <div class="auth-actions">
+          <button id="loginBtn" type="button">Login</button>
+          <button id="signupBtn" type="button">Sign up</button>
+        </div>
+      </div>
+      <button id="logoutBtn" type="button" hidden>Logout</button>
+    </section>
+
+    <section class="tools">
+      <input id="searchInput" type="search" placeholder="Search prompts">
+      <select id="categoryFilter" aria-label="Filter by category">
+        <option value="All">All</option>
+      </select>
+    </section>
+
+    <details class="more-menu">
+      <summary>More</summary>
+      <section class="quick-actions">
+        <button id="voiceBtn">Voice prompt</button>
+        <button id="toggleFloatingBtn">Pause floating button</button>
+        <button id="exportBtn">Export prompts</button>
+        <button id="importBtn">Import prompts</button>
+        <input id="importFileInput" type="file" accept="application/json,.json" hidden>
+      </section>
+    </details>
+
+    <section id="limitNotice" class="notice" hidden>
+      Prompt limit reached. Delete one to save another.
+    </section>
+
+    <section id="editor" class="editor" hidden>
+      <input id="titleInput" placeholder="Title">
+      <select id="categoryInput" aria-label="Category"></select>
+      <div id="screenshotPreviewWrap" class="screenshot-preview" hidden>
+        <img id="screenshotPreview" alt="Captured prompt screenshot">
+        <button id="clearScreenshotBtn" type="button">Remove screenshot</button>
+      </div>
+      <textarea id="promptInput" rows="5" placeholder="Paste, write, or transcribe your prompt"></textarea>
+      <textarea id="refinedInput" rows="5" placeholder="Refined version"></textarea>
+      <div class="editor-actions">
+        <button id="refineBtn" type="button">Refine</button>
+        <button id="saveBtn" type="button">Save</button>
+        <button id="cancelBtn" type="button">Cancel</button>
+      </div>
+    </section>
+
+    <section id="promptList" class="prompt-list"></section>
+
+    <template id="promptTemplate">
+      <article class="prompt-card">
+        <div class="card-head">
+          <span class="tag"></span>
+          <span class="uses"></span>
+        </div>
+        <h2></h2>
+        <p></p>
+        <div class="card-actions">
+          <button data-action="copy">Copy</button>
+          <button data-action="edit">Edit</button>
+          <button data-action="delete">Delete</button>
+        </div>
+      </article>
+    </template>
+  </main>
+  <script src="shared.js"></script>
+  <script src="supabase.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

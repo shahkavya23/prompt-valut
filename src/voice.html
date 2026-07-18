@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prompttora Voice</title>
+  <link rel="stylesheet" href="voice.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Voice Prompt</h1>
+        <p>Speak your idea. Prompttora will save the transcript as a prompt.</p>
+      </div>
+      <span id="status">Idle</span>
+    </header>
+    <section class="controls">
+      <button id="startBtn">Start listening</button>
+      <button id="stopBtn">Stop</button>
+      <button id="saveBtn">Save prompt</button>
+      <button id="clearBtn">Clear</button>
+    </section>
+    <textarea id="transcript" placeholder="Your spoken prompt will appear here."></textarea>
+    <p id="notice"></p>
+  </main>
+  <script src="shared.js"></script>
+  <script src="supabase.js"></script>
+  <script src="voice.js"></script>
+</body>
+</html>
